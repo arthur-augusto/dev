@@ -3,9 +3,11 @@
 git clone -b v0.11.3 https://github.com/neovim/neovim.git $HOME/personal/neovim
 
 # Dependencies
-sudo pacman -Sy base-devel cmake ninja curl libluv  libutf8proc  libuv  libvterm>=0.3.3  lua51-lpeg  luajit  msgpack-c  tree-sitter  tree-sitter-c  tree-sitter-lua  tree-sitter-markdown  tree-sitter-query  tree-sitter-vim  tree-sitter-vimdoc  unibilium
+sudo pacman -Sy base-devel cmake ninja curl libluv  libutf8proc  libuv  libvterm lua51-lpeg  luajit  msgpack-c  tree-sitter  tree-sitter-c  tree-sitter-lua  tree-sitter-markdown  tree-sitter-query  tree-sitter-vim  tree-sitter-vimdoc  unibilium
 
 cd $HOME/personal/neovim
 
 make CMAKE_BUILD_TYPE=RelWithDebInfo
 sudo make install
+
+rm -rf $HOME/personal/neovim
