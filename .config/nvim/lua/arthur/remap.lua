@@ -29,14 +29,4 @@ vim.keymap.set("", "<down>", "<nop>", { noremap = true })
 vim.keymap.set("", "<left>", "<nop>", { noremap = true })
 vim.keymap.set("", "<right>", "<nop>", { noremap = true })
 
--- Disable arrows in insert mode
-vim.keymap.set("i", "<up>", "<nop>", { noremap = true })
-vim.keymap.set("i", "<down>", "<nop>", { noremap = true })
-vim.keymap.set("i", "<left>", "<nop>", { noremap = true })
-vim.keymap.set("i", "<right>", "<nop>", { noremap = true })
-
--- Disable arrows in visual mode
-vim.keymap.set("v", "<up>", "<nop>", { noremap = true })
-vim.keymap.set("v", "<down>", "<nop>", { noremap = true })
-vim.keymap.set("v", "<left>", "<nop>", { noremap = true })
-vim.keymap.set("v", "<right>", "<nop>", { noremap = true })
+vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
