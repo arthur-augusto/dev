@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+sudo pacman -S --needed git base-devel
+git clone https://aur.archlinux.org/yay.git $HOME/personal/yay
+cd $HOME/personal/yay
+makepkg -si
+rm -rf $HOME/personal/yay
