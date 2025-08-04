@@ -31,3 +31,4 @@ vim.opt.colorcolumn = "80"
 vim.opt.mouse = nil
 
 vim.g.netrw_banner = 0
+vim.g.netrw_bufsettings = 'noma nomod nu rnu nobl nowrap ro'
