@@ -1,44 +1,44 @@
 #!/usr/bin/env bash
 
 script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
-filter=""
-dry="0"
 
-while [[ $# > 0 ]]; do
+grep=""
+dry_run="0"
+
+while [[ $# -gt 0 ]]; do
+    echo "ARG: \"$1\""
 	if [[ $1 == "--dry" ]]; then
-		dry="1"
+		dry_run="1"
 	else
-		filter="$1"
+		grep="$1"
 	fi
 	shift
 done
 
 log() {
-	if [[ $dry == "1" ]]; then
-		echo "[DRY_RUN]: $@"
+	if [[ $dry_run == "1" ]]; then
+		echo "[DRY_RUN]: $1"
 	else
-		echo "$@"
+		echo "$1"
 	fi
 }
 
 
 execute() {
-	log "execute $@"
-	if [[ $dry == "1" ]]; then
+	log "running script: $@"
+	if [[ $dry_run == "1" ]]; then
 		return
 	fi
 	"$@"
 }
 
-log "$script_dir -- $filter"
+log "RUN: env: $env -- grep: $grep"
 
-cd $script_dir
+runs_dir=$(find $script_dir/runs -maxdepth 1 -mindepth 1 -executable -type f)
 
-scripts=$(find ./runs -maxdepth 1 -mindepth 1 -executable -type f)
-
-for script in $scripts; do
-	if echo "$script" | grep -qv "$filter"; then
-		log "filtering $script"
+for s in $runs_dir; do
+    if basename $s | grep -vq "$grep"; then
+        log "grep \"$grep\" filtered out $s"
 		continue
 	fi
 
