@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 # Dependencies
-sudo pacman -S --noconfirm  neovim
+sudo pacman -S --needed --noconfirm  neovim
