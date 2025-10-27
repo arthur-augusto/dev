@@ -1,39 +1,88 @@
-@define-color foreground #eeeeee;
-@define-color foreground-inactive #aaaaaa;
-@define-color background #000000;
+/* ================================
+   Tema baseado no esquema do terminal
+   ================================ */
+
+@define-color background #0c1014;
+@define-color foreground #99d1ce;
+@define-color selection-background #0a3749;
+@define-color selection-foreground #99d1ce;
+@define-color cursor-color #99d1ce;
+@define-color cursor-text #11151c;
+
+@define-color color0 #0c1014;
+@define-color color1 #c23127;
+@define-color color2 #2aa889;
+@define-color color3 #edb443;
+@define-color color4 #195466;
+@define-color color5 #4e5166;
+@define-color color6 #33859e;
+@define-color color7 #99d1ce;
+
+/* ================================
+   Estilos gerais
+   ================================ */
 
 * {
-    font-family: JetBrainsMono Nerd Font;
-    font-size: 17px;
-    padding: 0;
-    margin: 0;
+  font-family: JetbrainsMono Nerd Font;
+  font-size: 14px;
+  min-height: 0;
+  padding-right: 2px;
+  padding-left: 2px;
+  padding-bottom: 0px;
 }
 
 #waybar {
-    color: @foreground;
-    background-color: @background;
+  background: transparent;
+  color: @foreground;
+  margin: 2px 2px;
+}
+
+/* ================================
+   Workspaces
+   ================================ */
+
+#workspaces {
+  margin: 5px;
+  background: @color0;
+  margin-left: 2px;
 }
 
 #workspaces button {
-    color: @foreground;
-    padding-left: 0.7em;
+  color: @color4;
+  padding: 0.4rem;
+  background: transparent;
 }
 
-#workspaces button.empty {
-    color: @foreground-inactive;
+#workspaces button.active {
+  color: @foreground;
 }
 
-#memory,
-#custom-platform-profile {
-    padding-left: 1em
-}
+/* ================================
+   Módulos
+   ================================ */
 
-#wireplumber,
+#clock,
+#pulseaudio,
+#backlight,
 #battery,
-#idle_inhibitor,
+#cpu,
+#memory,
+#disk,
 #language,
-#network,
-#bluetooth,
 #tray {
-    padding-right: 1em 
+  background-color: @color0;
+  padding: 0.5rem 0.5rem;
+  margin: 5px 0;
+}
+
+#battery {
+  color: @color2; /* Verde */
+}
+
+#battery.charging {
+  color: @color2;
+}
+
+#battery.warning:not(.charging) {
+  color: @color1; /* Vermelho */
 }
