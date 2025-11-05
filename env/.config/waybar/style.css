@@ -26,25 +26,31 @@
   font-family: JetbrainsMono Nerd Font;
   font-size: 14px;
   min-height: 0;
-  padding-right: 2px;
-  padding-left: 2px;
   padding-bottom: 0px;
 }
 
 #waybar {
   background: transparent;
   color: @foreground;
-  margin: 2px 2px;
+  margin: 0;
 }
 
 /* ================================
-   Workspaces
+   Módulos
    ================================ */
 
+#workspaces,
+#window,
+.modules-center,
+.modules-right {
+  border: 2px solid @color7;
+  margin: 8px;
+  margin-bottom: 0;
+}
+
 #workspaces {
-  margin: 5px;
   background: @color0;
-  margin-left: 2px;
+  padding-right: 0.45rem;
 }
 
 #workspaces button {
@@ -57,9 +63,16 @@
   color: @foreground;
 }
 
-/* ================================
-   Módulos
-   ================================ */
+#window {
+  background-color: @color0;
+  padding: 0.5rem;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+window#waybar.empty #window {
+  opacity: 0;
+}
 
 #clock,
 #pulseaudio,
@@ -71,18 +84,26 @@
 #language,
 #tray {
   background-color: @color0;
-  padding: 0.5rem 0.5rem;
-  margin: 5px 0;
+  padding: 0.5rem;
+  margin: 0;
 }
 
-#battery {
-  color: @color2; /* Verde */
+#pulseaudio:not(.loud),
+#battery.warning:not(.charging),
+#cpu.warning,
+#memory.warning,
+#disk.warning {
+  color: @color3; /* Amarelo */
 }
 
-#battery.charging {
-  color: @color2;
-}
-
-#battery.warning:not(.charging) {
+#pulseaudio.muted,
+#battery.critical:not(.charging),
+#cpu.critical,
+#memory.critical,
+#disk.critical {
   color: @color1; /* Vermelho */
+}
+
+#battery.full {
+  color: @color2; /* Verde */
 }
